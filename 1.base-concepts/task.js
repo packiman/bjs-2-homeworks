@@ -1,29 +1,26 @@
-// Задание 1
-
 "use strict"
 function solveEquation(a, b, c) { 
-    if(a == 0)
+    if(a == 0) {
         return false;
-    let res = {};
+    }
+    let res = [];
     let D = b * b - 4 * a * c;
     console.log('D = ' + D);
-    if(D < 0)
+    if(D < 0) {
         return false;
+    }
     res['Дискриминант'] = D;
-    if(D == 0)
+    if(D == 0) {
         res["Квадратные корни"] = (-b + Math.sqrt(D)) / (2 * a);
-    else if(D > 0){
-        let tmp = [];
-        tmp.push((-b + Math.sqrt(D)) / (2 * a));
-        tmp.push((-b - Math.sqrt(D)) / (2 * a));
-        res["Квадратные корни"] = tmp;
+    }
+    if(D > 0) {
+        res.push((-b + Math.sqrt(D)) / (2 * a));
+        res.push((-b - Math.sqrt(D)) / (2 * a));
     }
     return res;
 }
-console.log(solveEquation(1,1,-56));
 
 
-// Задание 2
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
