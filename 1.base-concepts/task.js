@@ -4,21 +4,23 @@ function solveEquation(a, b, c) {
         return false;
     }
     let res = [];
-    let D = b * b - 4 * a * c;
+    let D = Math.pow(b, 2) - 4 * a * c;
     console.log('D = ' + D);
     if(D < 0) {
-        return false;
+        console.log("Корней нет");
     }
-    res['Дискриминант'] = D;
     if(D == 0) {
-        res["Квадратные корни"] = (-b + Math.sqrt(D)) / (2 * a);
+        console.log("Один корень");
+        res.push(-b / (2 * a));
     }
     if(D > 0) {
+        console.log("Два корня");
         res.push((-b + Math.sqrt(D)) / (2 * a));
         res.push((-b - Math.sqrt(D)) / (2 * a));
     }
     return res;
 }
+console.log(solveEquation(1,1,-56));
 
 
 
