@@ -67,3 +67,69 @@ class DetectiveBook extends Book {
   }
 }
 
+class Library {
+  constructor(name) {
+    this.name = name;
+    this.books = [];
+  }
+
+  addBook(book) {
+    if (book instanceof PrintEditionItem && book.state > 30) {
+      this.books.push(book);
+    }
+  }
+
+  findBookBy(type, value) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i][type] === value) {
+        return this.books[i];
+      }
+    }
+    return null;
+  }
+
+  giveBookByName(bookName) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].name === bookName) {
+        return this.books.splice(i, 1)[0];
+      }
+    }
+    return null;
+  }
+}
+
+class Student {
+  constructor(name) {
+    this.name = name;
+    this.marks = {};
+  }
+
+  addMark(mark, subject) {
+    if (mark < 2 || mark > 5) {
+      return;
+    }
+    if (!this.marks[subject]) {
+      this.marks[subject] = [];
+    }
+    this.marks[subject].push(mark);
+  }
+
+  getAverageBySubject(subject) {
+    if (!(subject in this.marks)) {
+      return 0;
+    }
+    return this.marks[subject].reduce((current, next) => current + next, 0) / this.marks[subject].length;
+  }
+
+  getAverage() {
+    const subjects = Object.keys(this.marks);
+    if (subjects.length === 0) {
+      return 0;
+    }
+    return subjects.reduce((sumMarks, subject) => sumMarks + this.getAverageBySubject(subject), 0) / subjects.length;
+  }
+}
+
+
+
+
